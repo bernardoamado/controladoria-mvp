@@ -1,0 +1,43 @@
+{
+    "titulos": [{
+        "id": 1,
+        "numero": "abc123",
+        "valor": 189.09,
+        "emissao": "2024-01-12",
+        "vencimento": "2024-01-31",
+        "fluxo": "Entrada",
+        "estabelecimento": "AUT - Austin"
+    }, {
+        "id": 2,
+        "numero": "kwy888",
+        "valor": 445.50,
+        "emissao": "2024-01-23",
+        "vencimento": "2024-01-31",
+        "fluxo": "Entrada",
+        "estabelecimento": "AUT - Austin"
+    }, {
+        "id": 3,
+        "numero": "def456",
+        "valor": 229.59,
+        "emissao": "2024-03-03",
+        "vencimento": "2024-03-31",
+        "fluxo": "Entrada",
+        "estabelecimento": "AUT - Austin"
+    }, {
+        "id": 4,
+        "numero": "ghi789",
+        "valor": 230.49,
+        "emissao": "2024-11-12",
+        "vencimento": "2024-11-30",
+        "fluxo": "Entrada",
+        "estabelecimento": "AUT - Austin"
+    }, {
+        "id": 5,
+        "numero": "zzz000",
+        "valor": 139.90,
+        "emissao": "2024-06-12",
+        "vencimento": "2024-06-30",
+        "fluxo": "Entrada",
+        "estabelecimento": "AUT - Austin"
+    }]
+}

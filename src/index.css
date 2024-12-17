@@ -1,0 +1,7 @@
+body > div:not(.dhx_widget):not(.app-entrypoint) {
+  display: none !important;
+}
+
+.app-entrypoint section {
+  padding: 50px 100px;
+}
