@@ -1,3 +1,23 @@
+const ArrayUtil = {
+    enumerateSentence: (arr) => {
+        return [arr.slice(0, -1).join(', '), arr[arr.length - 1]].join(' ou ');
+    }
+};
+
+const DateUtil = {
+    asString: (dt, locale) => dt.toLocaleDateString(locale || 'pt-br')
+}
+
+const NhxUtil = {
+    currencyMask: {
+        prefix: "R$ ",
+        maxDecLength: 2,
+        minDecLength: 2,
+        decSeparator: ',',
+        groupSeparator: '.'
+    }
+}
+
 const ObjectUtil = {
     merge: function(obj, defaultObj, overwrite) {
         const newObj = {};
@@ -54,11 +74,10 @@ const ObjectUtil = {
     }
 }
 
-const DateUtil = {
-    asString: (dt, locale) => dt.toLocaleDateString(locale || 'pt-br')
-}
 
 export {
+    ArrayUtil,
     DateUtil,
+    NhxUtil,
     ObjectUtil
 };

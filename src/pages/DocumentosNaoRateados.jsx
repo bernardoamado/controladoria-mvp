@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Grid from '../components/Grid';
+import Filter from '../components/Filter';
 import useFetch from '../js/useFetch';
-import { ObjectUtil } from '../js/utils';
+import { NhxUtil, ObjectUtil } from '../js/utils';
 
 export default function DocumentosNaoRateados() {
     const parseTitulo = (t) => ObjectUtil.parse(t, {
@@ -37,7 +38,7 @@ export default function DocumentosNaoRateados() {
                 id: "valor",
                 header: [{ text: "Valor" }],
                 type: "number",
-                numberMask: { prefix: "R$" },
+                numberMask: NhxUtil.currencyMask
             },
             { id: 'estabelecimento', header: [{ text: 'Estabelecimento' }] },
         ],
@@ -51,7 +52,8 @@ export default function DocumentosNaoRateados() {
     return (
         <div className="page">
             <h2>Documentos n&atilde;o rateados</h2>
-            <section>
+            
+                <Filter apply={(conditions) => console.log('Vai aplicar o filtro: ', conditions)} />
                 { isLoading && <p>Carregando documentos...</p> }
                 { error && <p className='error'>Erro ao carregar os documentos: <b>{error}</b></p>}
                 { (!isLoading) && (!error)
@@ -61,7 +63,7 @@ export default function DocumentosNaoRateados() {
                     pkey="id"
                     dblClick={(t) => alert(`titulo: ${t.numero}`)}
                 /> }
-            </section>
+            
         </div>
     );
 }

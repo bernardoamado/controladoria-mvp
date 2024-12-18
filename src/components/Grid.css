@@ -1,3 +1,41 @@
 .dhx_grid-content, .dhx_grid-body {
     height: auto !important;
+    border-radius: 12px;
+}
+
+.dhx_header-wrapper {
+    z-index: auto;
+}
+
+.borderless .dhx_grid-cell {
+    border-top: none;
+    border-left: none;
+}
+
+.dhx_grid-less-height .dhx_footer-row:last-child .dhx_grid-footer-cell,
+.dhx_grid-less-height .dhx_grid-row:last-of-type {
+    border-bottom: none;
+}
+
+.dhx_grid-less-width .dhx_grid_footer_cell:last-child,
+.dhx_grid-less-width .dhx_last-column-cell,
+.dhx_grid-less-width .dhx_last-column-cell.dhx_span-cell,
+.dhx_grid-less-width .dhx_span-last-col,
+.dhx_grid_border .dhx_grid_footer_cell:last-child,
+.dhx_grid_border .dhx_last-column-cell,
+.dhx_grid_border .dhx_last-column-cell.dhx_span-cell,
+.dhx_grid_border .dhx_span-last-col {
+    border-right: none;
+}
+
+.dhx_grid-less-width .dhx_grid-footer-cell:last-child,
+.dhx_grid-less-width .dhx_grid-header-cell:last-child,
+.dhx_grid_border .dhx_grid-footer-cell:last-child,
+.dhx_grid_border .dhx_grid-header-cell:last-child {
+    border-right: none;
+}
+
+.dhx_grid-less-width .dhx_grid-cell:last-child,
+.dhx_grid_border .dhx_grid-cell:last-child {
+    border-right: none;
 }

@@ -19,7 +19,7 @@ export default function Grid({
 
         // Cleanup
         return () => { newGrid?.destructor(); };
-    }, []);
+    }, [config]);
 
     useEffect(() => {
         grid?.data.parse(ObjectUtil.copy(gridData));
@@ -29,7 +29,7 @@ export default function Grid({
                 dblClick(gridData.filter(d => pk(d) === pk(row))[0]);
             });
         }
-    }, [gridData])
+    }, [gridData, grid])
 
     return <div className="nhids-grid-container" ref={gNode}></div>;
 }
