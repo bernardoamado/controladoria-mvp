@@ -1,0 +1,47 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 16px;
+    box-shadow: 0px 5px 5px var(--brdr-color);
+    background-color: var(--bgnd-color);
+    z-index: 100;
+}
+
+.navbar > * {
+    display: inline-block;
+}
+
+.navbar .upper-label .upper-label,
+.navbar .upper-label .upper-label + * {
+    font-size: 1em;
+}
+
+.navbar select {
+    border: none;
+    background-color: inherit;
+    position: absolute;
+    right: -5px;
+    color: var(--icon-color);
+}
+
+.breadcrumbs {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.breadcrumbs .back-btn {
+    background-color: transparent;
+    border: none;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+}
+
+.breadcrumbs .back-btn:hover {
+    background-color: rgba(150, 150, 200, 0.1);
+}
+
+#user-profile {
+    border-radius: 8px;
+}

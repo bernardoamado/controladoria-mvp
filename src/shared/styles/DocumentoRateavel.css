@@ -1,0 +1,32 @@
+.rateios {
+    margin: 32px 0px;
+    font-size: 1em;
+}
+
+.rateios header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.rateios header p {
+    color: rgba(120, 120, 120, 0.4);
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.rateios p {
+    font-size: 0.8em;
+}
+
+.rateios header hr {
+    flex-grow: 1;
+    height: 0px;
+    margin: 0px 16px;
+    margin-right: 64px;
+    border-color: rgba(238, 238, 238, 0.5);
+}
+
+/*.rateios .inline-list li {
+    flex-grow: 1;
+}*/

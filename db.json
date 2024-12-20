@@ -12,6 +12,66 @@
         "estabelecimento": {
             "id": 1,
             "nome": "AUT - Austin"
+        },
+        "rateios": {
+            "documentorateado": {
+                "id": 1,
+                "valor": 189.09
+            },
+            "classificacoesfinanceiras": [
+                {
+                    "classificacaofinanceira": {
+                        "id": 3,
+                        "codigo": "CF-03",
+                        "descricao": "Class. Fin. 03"
+                    },
+                    "valor": 100
+                },
+                {
+                    "classificacaofinanceira": {
+                        "id": 4,
+                        "codigo": "CF-04",
+                        "descricao": "Class. Fin. 04"
+                    },
+                    "valor": 89.09
+                }
+            ],
+            "centroscustos": [
+                {
+                    "centrocusto": {
+                        "id": 23,
+                        "codigo": "CC-23",
+                        "descricao": "Centro de Custo 23"
+                    },
+                    "valor": 189.09
+                }
+            ],
+            "projetos": [
+                {
+                    "projeto": {
+                        "id": 7,
+                        "codigo": "PR-07",
+                        "nome": "Projeto 07"
+                    },
+                    "valor": 50
+                },
+                {
+                    "projeto": {
+                        "id": 8,
+                        "codigo": "PR-08",
+                        "nome": "Projeto 08"
+                    },
+                    "valor": 100
+                },
+                {
+                    "projeto": {
+                        "id": 9,
+                        "codigo": "PR-09",
+                        "nome": "Projeto 09"
+                    },
+                    "valor": 39.09
+                }
+            ]
         }
     }, {
         "id": 2,
