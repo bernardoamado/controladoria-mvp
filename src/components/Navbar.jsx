@@ -1,13 +1,22 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import cloudIcon from '../assets/Cloud.svg';
 import profileIcon from '../assets/CommonActions.svg';
 import './Navbar.css';
+import { useMemo } from 'react';
 
 export default function NavBar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const atHome = useMemo(() => location.pathname === '/', [location.pathname]);
+  const goToHome = () => navigate('/');
   return (
     <nav className="navbar clearfix">
       <div className="left-floating">
         <div className="breadcrumbs">
-          <button className="back-btn clickable"><i className="fa-solid fa-arrow-left"></i></button>
+          { (!atHome) && <button
+            className="back-btn clickable"
+            onClick={goToHome}
+          ><i className="fa-solid fa-arrow-left"></i></button>}
           <span id="back-to">Controladoria</span>
         </div>
       </div>

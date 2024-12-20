@@ -1,5 +1,5 @@
 const ArrayUtil = {
-    enumerateSentence: (arr) => {
+    enumerateSentence: function(arr) {
         return [arr.slice(0, -1).join(', '), arr[arr.length - 1]].join(' ou ');
     }
 };

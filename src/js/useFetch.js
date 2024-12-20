@@ -9,6 +9,7 @@ function useFetch(url) {
     const fetchData = async () => {
       try {
         const response = await fetch(url);
+        console.log('response', response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -21,7 +22,8 @@ function useFetch(url) {
       }
     };
 
-    fetchData();
+    if (url)
+      fetchData();
   }, [url]); // Only re-fetch when the URL changes
 
   return { data, isLoading, error };

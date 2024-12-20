@@ -1,47 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import './Filter.css';
 import { ArrayUtil } from "../js/utils";
 
-function FilterButton({ label, options, applyFilter }) {
-    const [showModal, setShowModal] = useState(false);
-    const [selection, setSelection] = useState([]);
-
-    const openModal = () => {
-        setShowModal(true);
-    };
-    const closeModal = () => {
-        setShowModal(false);
-    }
-    const handleModalOverlayClick = (e) => {
-        if (e.target.classList.contains('modal-overlay'))
-            closeModal();
-    };
-    const updateFilter = () => {
-        if (applyFilter)
-            applyFilter(selection);
-    };
-
-    return (
-        <div className="filter-btn-container">
-        <button onClick={openModal}>{label}</button>
-        {showModal && (
-            <div className="filter-modal">
-                <div className="modal-overlay" onClick={handleModalOverlayClick}>
-                    <div className="modal-content">
-                    <FilterSelection 
-                        options={options}
-                        currentSelection={selection}
-                        applySelection={(newSelection) => setSelection(newSelection)}
-                    />
-                    <button onClick={closeModal}>Fechar</button>
-                    <button onClick={updateFilter}>Filtrar</button>
-                    </div>
-                </div>
-            </div>
-        )}
-        </div>
-    );
-}
 
 function FilterSelection({
     options,
@@ -52,137 +12,246 @@ function FilterSelection({
 
     const handleCheckboxChange = (event) => {
         const { checked, value } = event.target;
-        if (checked) {
+        if (checked)
             setSelectedOptions([...selectedOptions, value]);
-        } else {
+        else
             setSelectedOptions(selectedOptions.filter((option) => option !== value));
-        }
+    };
+
+    useEffect(() => {
         if (applySelection)
             applySelection(selectedOptions);
-    };
+    }, [selectedOptions]);
 
     return (
         <ul className="filter-selection">
             {options.map((option, i) => (
-            <li key={i}>
-                <input
-                    type="checkbox"
-                    name={option.attr}
-                    value={option.value}
-                    checked={selectedOptions.includes(option.value)}
-                    onChange={handleCheckboxChange}
-                />
-                <label htmlFor={option.attr}>{option.label}</label>
-            </li>
+                <li key={i}>
+                    <input
+                        type="checkbox"
+                        name={option.attr}
+                        value={option.value}
+                        checked={selectedOptions.includes(option.value)}
+                        onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor={option.attr}>{option.label}</label>
+                </li>
             ))}
         </ul>
     );
 }
 
-export default function Filter({ apply }) {
-    const [activeType, setActiveType] = useState('T');
+function FilterModal({
+    title,
+    currentFilterSelection,
+    filterOptions,
+    filterAction,
+    closeAction,
+    setSelectionCallback
+}) {
+    const handleModalOverlayClick = (e) => {
+        if (e.target.classList.contains('modal-overlay'))
+            closeAction();
+    };
+    return (
+        <div className="filter-modal">
+            <div className="modal-overlay" onClick={handleModalOverlayClick}>
+                <div className="modal-content">
+                    <h1>{title}</h1>
+                    <FilterSelection 
+                        options={filterOptions}
+                        currentSelection={currentFilterSelection}
+                        applySelection={(newSelection) => setSelectionCallback(newSelection)}
+                    />
+                    <button onClick={closeAction}>Fechar</button>
+                    <button onClick={filterAction}>Filtrar</button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function FilterButton({
+    label,
+    options,
+    applyFilter,
+    currentSelection
+}) {
+    const [showModal, setShowModal] = useState(false);
+    const [selection, setSelection] = useState([]);
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+    const closeModal = () => {
+        setShowModal(false);
+    }
+    const updateFilter = () => {
+        if (applyFilter)
+            applyFilter(selection);
+        closeModal();
+    };
+
+    useEffect(() => {
+        setSelection(currentSelection);
+    }, [currentSelection]);
+
+    return (
+        <div className="filter-btn-container">
+            <button onClick={openModal}>{label}</button>
+            {showModal && <FilterModal
+                title={label}
+                currentFilterSelection={selection}
+                filterOptions={options}
+                closeAction={closeModal}
+                filterAction={updateFilter}
+                setSelectionCallback={setSelection}
+            />}
+        </div>
+    );
+}
+
+function AppliedFiltersList({
+    buttonFilter,
+    appliedValues,
+    filterOptions,
+    removeAppliedFilterCallback
+}) {
+    return (
+        <ul className="inline-list applied-filters">
+            {appliedValues?.map((val, j) => (
+                <li key={j} className="applied-filter"><span>
+                    {filterOptions?.filter(op => op.value === val)[0]?.label}
+                    <button onClick={() => removeAppliedFilterCallback(buttonFilter.attr, [val])}>
+                        <i className="fa-solid fa-xmark icon"></i>
+                    </button>
+                </span></li>
+            ))}
+        </ul>
+    );
+}
+
+function FiltersList({
+    currentConditions,
+    buttons,
+    applyFilterButtonCallback,
+    removeAppliedFilterCallback,
+    clearAppliedFiltersCallback
+}) {
+    const getCurrentSelection = useCallback(
+        (buttonFilter) => currentConditions?.fields
+            .filter(f => f?.name === buttonFilter.attr)[0]?.values,
+        [currentConditions]
+    );
+    return (
+        <div className="filters-list-container">
+            <ul className="inline-list">{ buttons.map((btnFilter, i) => (
+                <li key={i} className="button-filters">
+                    <AppliedFiltersList
+                        buttonFilter={btnFilter}
+                        appliedValues={getCurrentSelection(btnFilter)}
+                        filterOptions={btnFilter.options}
+                        removeAppliedFilterCallback={removeAppliedFilterCallback}
+                    />
+                    <FilterButton
+                        className="clickable"
+                        label={ btnFilter.label }
+                        options={ btnFilter.options }
+                        applyFilter={(sel) => applyFilterButtonCallback(btnFilter.attr, sel)}
+                        currentSelection={getCurrentSelection(btnFilter)}
+                    />
+                </li>
+            )) }</ul>
+            <button
+                className="tertiary clickable"
+                onClick={clearAppliedFiltersCallback}
+            >Limpar</button>
+        </div>
+    );
+}
+
+function InfoSelector({
+    buttons,
+    activeBtnId,
+    activateCallback
+}) {
+    return (
+        <div className="info-selector">
+            {buttons?.map(btn => (
+                <button
+                    key={btn.id}
+                    className={`clickable ${(activeBtnId === btn.id) ? 'active' : ''}`}
+                    onClick={() => activateCallback(btn.id)}
+                >
+                    {btn.label}
+                </button>
+            ))}
+        </div>
+    );
+}
+
+export default function Filter({
+    apply,
+    config
+}) {
+    const [activeInfo, setActiveInfo] = useState(null);
     const [filterText, setFilterText] = useState('');
     const [filterPlaceholder, setFilterPlaceholder] = useState('');
     const [availableFilters, setAvailableFilters] = useState([]);
     const [conditions, setConditions] = useState(null);
     const [wildcardFields, setWildcardFields] = useState([]);
-    const buttonFilters = useMemo(
-        () => availableFilters
-            .filter(f => Array.isArray(f?.options) && f.options.length)
-            .map(af => {
-                return {
-                    btnFilter: af,
-                    appliedValues: conditions?.fields.filter(f => f?.name == af?.name)[0]?.values
-                };
-            }),
-        [availableFilters]
-    );
-    const filters = {
-        'T': [
-            {attr: 'numero', label: 'Numero', wildcard: true, single: false},
-        ],
-        'L': [
-            {attr: 'documento', label: 'Documento', wildcard: true, single: false},
-        ]
-    };
-    const sharedFilters = [
-        {
-            attr: 'estabelecimento',
-            label: 'Estabelecimento',
-            wildcard: true,
-            single: false,
-            options: [
-                { value: 1, label: 'Austin' },
-                { value: 2, label: 'Boston' },
-                { value: 3, label: 'Atlanta' },
-                { value: 4, label: 'Edinburgh' },
-                { value: 5, label: 'Dunedin' },
-            ]
-        },
-        {
-            attr: 'fluxo',
-            label: 'Fluxo',
-            wildcard: false,
-            single: true,
-            options: [
-                { value: 'IN', label: 'Entrada' },
-                { value: 'OUT', label: 'Saida'}
-            ]
-        },
-    ];
-    const clearConditions = () => {
+    const [buttonFilters, setButtonFilters] = useState([]);
+    const [infoConfig, setInfoConfig] = useState(config);
+    
+    const updateConditions = ({
+        infoId,
+        wildcard,
+        fields
+    }) => {
         setConditions({
+            infoId: infoId || activeInfo,
+            wildcard: wildcard || conditions.wildcard,
+            fields: fields || conditions.fields
+        })
+    };
+    const clearConditions = () => {
+        updateConditions({
             wildcard: {
-                fieldNames: [
-                    //'estabelecimento', 'numero'
-                ],
+                fieldNames: [],
                 text: '' // filterText
             },
-            fields: [
-                //{ name: 'estabelecimento', values: ['1', '2'] }
-            ]
+            fields: []
         });
     };
-    const activateDocuments = (doctype) => {
-        setActiveType(doctype)
+    const activateInfo = (id) => {
+        setActiveInfo(id)
         clearConditions();
-        setAvailableFilters(filters[doctype].concat(sharedFilters));
+        if (Array.isArray(infoConfig))
+            setAvailableFilters(infoConfig.filter(cfg => cfg.id === id)[0].fields);
     };
-    const selectTitulos = () => activateDocuments('T');
-    const selectLancamentos = () => activateDocuments('L');
-    const clearWildcard = () => {
-        return {
-            wildcard: {
-                fieldNames: wildcardFields?.map(f => f?.attr),
-                text: ''
-            },
-            fields: conditions.fields
-        };
-    };
-    const removeAppliedFilters = (names) => {
-        setConditions({
-            wildcard: conditions.wildcard,
-            fields: conditions.fields.filter(f => names.includes(f?.name))
-        });
-    };
-    const removeAppliedFilter = (name, values) => {
-        setConditions({
-            wildcard: conditions.wildcard,
-            fields: conditions.fields.map(f => {
-                if (f?.name != name)
-                    return f;
-                else
-                    return {
-                        name: f?.name,
-                        values: f?.values.filter(val => !values.includes(val))
-                    }
-            })
-        });
-    };
+    const clearWildcard = () => updateConditions({
+        wildcard: {
+            fieldNames: wildcardFields?.map(f => f?.attr),
+            text: ''
+        }
+    });
+    const clearAppliedFilters = () => updateConditions({
+        fields: []
+    });
+    const removeAppliedFilter = (name, values) => updateConditions({
+        fields: conditions.fields.map(f => {
+            if (f?.name !== name)
+                return f;
+            else
+                return {
+                    name: f?.name,
+                    values: f?.values.filter(val => !values.includes(val))
+                }
+        })
+    });
     const applyFilterButton = (attr, values) => {
-        setConditions({
-            wildcard: conditions.wildcard,
-            fields: [...conditions.fields.filter(f => f?.name != attr), {
+        updateConditions({
+            fields: [...conditions.fields.filter(f => f?.name !== attr), {
                 name: attr,
                 values: values
             }]
@@ -190,79 +259,68 @@ export default function Filter({ apply }) {
     };
     const applyFilterText = () => {
         if ((filterText || '').length >= 3)    
-            setConditions({
+            updateConditions({
                 wildcard: {
                     fieldsNames: conditions.wildcard.fieldsNames,
                     text: filterText
-                },
-                fields: conditions.fields
+                }
             })
         else if (conditions?.wildcard.text.length >= 3)
-            setConditions(clearWildcard());
+            clearWildcard();
     };
+
     useEffect(() => {
-        selectTitulos();
-    }, []);
+        if (infoConfig)
+            activateInfo(infoConfig[0]?.id);
+    }, [infoConfig]);
     useEffect(() => {
-        activateDocuments(activeType);
-    }, [activeType]);
+        setWildcardFields(availableFilters.filter(f => f?.wildcard));
+        setButtonFilters(availableFilters.filter(f => Array.isArray(f?.options) && f.options.length));
+        clearConditions();
+    }, [availableFilters]);
+    useEffect(() => {
+        setFilterPlaceholder(`Buscar por ${ArrayUtil
+            .enumerateSentence(wildcardFields.map(f => f?.label))
+            .toLowerCase()}`);
+    }, [wildcardFields]);
     useEffect(applyFilterText, [filterText]);
     useEffect(() => {
         if (apply && conditions)
             apply(conditions);
     }, [conditions]);
-    useEffect(() => {
-        setFilterPlaceholder(`Buscar por ${ArrayUtil.enumerateSentence(wildcardFields.map(f => f?.label))}`);
-    }, [wildcardFields]);
 
     return (
-<div className="nhids-filter">
-<section className="filtering">
-    <div className="centered">
-        <div className="search-area">
-        <span>
-            <i className="fa-solid fa-search icon"></i>
-        </span>
-        <input name="search-value"
-            type="text"
-            placeholder={filterPlaceholder}
-            value={filterText}
-            onChange={(e) => setFilterText(e.target.value)} />
-        </div>
-        <div className="list-filters">
-        <ul className="inline-list">
-            { buttonFilters.map((f, i) => (
-                <li key={i}>
-                    <ul className="inline-list">
-                        {f.appliedValues?.map((val, i) => (
-                            <li><button>{val}</button></li>
-                        ))}
-                    </ul>
-                    <FilterButton
-                        className="clickable"
-                        label={ f.btnFilter.label }
-                        options={ f.btnFilter.options }
-                        applyFilter={(sel) => applyFilterButton(f.btnFilter.attr, sel)}
+        <div className="nhids-filter">
+            <section className="filtering">
+                <div className="centered">
+                    <div className="search-area">
+                        <span>
+                            <i className="fa-solid fa-search icon"></i>
+                        </span>
+                        <input
+                            name="search-value"
+                            type="text"
+                            placeholder={filterPlaceholder}
+                            value={filterText}
+                            onChange={(e) => setFilterText(e.target.value)}
+                        />
+                    </div>
+                    <FiltersList
+                        currentConditions={conditions}
+                        buttons={buttonFilters}
+                        applyFilterButtonCallback={applyFilterButton}
+                        removeAppliedFilterCallback={removeAppliedFilter}
+                        clearAppliedFiltersCallback={clearAppliedFilters}
                     />
-                </li>
-            )) }
-        </ul>
-        <button className="tertiary clickable">Limpar</button>
+                </div>
+                <div className="flex-container justify-right">
+                    <InfoSelector
+                        buttons={infoConfig}
+                        activeBtnId={activeInfo}
+                        activateCallback={(infoId) => activateInfo(infoId)}
+                    />
+                </div>
+            </section>
         </div>
-    </div>
-    <div className="flex-container justify-right">
-        <div className="info-selector">
-        <button id="by-titulo"
-            className={`clickable ${(activeType == 'T') ? 'active' : ''}`}
-            onClick={selectTitulos}
-        >Por t&iacute;tulo</button>
-        <button id="by-lancamento"
-            className={`clickable ${activeType == 'L' ? 'active': ''}`}
-            onClick={selectLancamentos}
-        >Por lan&ccedil;amento</button>
-        </div>
-    </div>
-    </section>
-</div>
     );
 }

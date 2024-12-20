@@ -5,80 +5,210 @@
         "valor": 189.09,
         "emissao": "2024-01-12",
         "vencimento": "2024-01-31",
-        "fluxo": "Entrada",
-        "estabelecimento": "AUT - Austin"
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "estabelecimento": {
+            "id": 1,
+            "nome": "AUT - Austin"
+        }
     }, {
         "id": 2,
         "numero": "kwy888",
         "valor": 2234233445.5067,
         "emissao": "2024-01-23",
         "vencimento": "2024-01-31",
-        "fluxo": "Entrada",
-        "estabelecimento": "BST - Boston"
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "estabelecimento": {
+            "id": 2,
+            "nome": "BST - Boston"
+        }
     }, {
         "id": 3,
         "numero": "def456",
         "valor": 229.59,
         "emissao": "2024-03-03",
         "vencimento": "2024-03-31",
-        "fluxo": "Saida",
-        "estabelecimento": "Atl - Atlanta"
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "estabelecimento": {
+            "id": 3,
+            "nome": "Atl - Atlanta"
+        }
     }, {
         "id": 4,
         "numero": "ghi789",
         "valor": 230.49,
         "emissao": "2024-11-12",
         "vencimento": "2024-11-30",
-        "fluxo": "Entrada",
-        "estabelecimento": "Ebg - Edinburgh"
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "estabelecimento": {
+            "id": 4,
+            "nome": "Ebg - Edinburgh"
+        }
     }, {
         "id": 5,
         "numero": "zzz000",
         "valor": 139.90,
         "emissao": "2024-06-12",
         "vencimento": "2024-06-30",
-        "fluxo": "Saida",
-        "estabelecimento": "Dnd - Dunedin"
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "estabelecimento": {
+            "id": 5,
+            "nome": "Dnd - Dunedin"
+        }
     }],
-    "lancamentos": [{
+    "lancamentoscontas": [{
         "id": 1,
         "documento": "doc-abc123",
         "valor": 189.09,
-        "emissao": "2024-01-12",
-        "vencimento": "2024-01-31",
-        "fluxo": "Entrada",
-        "estabelecimento": "AUT - Austin"
+        "data": "2024-01-12",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 1,
+            "nome": "AUT - Austin"
+        }
     }, {
         "id": 2,
         "documento": "doc-kwy888",
         "valor": 445.50,
-        "emissao": "2024-01-23",
-        "vencimento": "2024-01-31",
-        "fluxo": "Entrada",
-        "estabelecimento": "BST - Boston"
+        "data": "2024-01-23",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 2,
+            "nome": "BST - Boston"
+        }
     }, {
         "id": 3,
         "documento": "doc-def456",
         "valor": 229.59,
-        "emissao": "2024-03-03",
-        "vencimento": "2024-03-31",
-        "fluxo": "Saida",
-        "estabelecimento": "ATL - Atlanta"
+        "data": "2024-03-03",
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "conta": "ITAU02 - 01425-3",
+        "estabelecimento": {
+            "id": 3,
+            "nome": "Atl - Atlanta"
+        }
     }, {
         "id": 4,
         "documento": "doc-ghi789",
         "valor": 230.49,
-        "emissao": "2024-11-12",
-        "vencimento": "2024-11-30",
-        "fluxo": "Entrada",
-        "estabelecimento": "EBG - Edinburgh"
+        "data": "2024-11-12",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 4,
+            "nome": "Ebg - Edinburgh"
+        }
     }, {
         "id": 5,
         "documento": "doc-zzz000",
         "valor": 139.90,
-        "emissao": "2024-06-12",
-        "vencimento": "2024-06-30",
-        "fluxo": "Saida",
-        "estabelecimento": "Dnd - Dunedin"
+        "data": "2024-06-12",
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "conta": "ITAU02 - 01425-3",
+        "estabelecimento": {
+            "id": 5,
+            "nome": "Dnd - Dunedin"
+        }
+    }, {
+        "id": 6,
+        "documento": "doc-adi20d3",
+        "valor": 1389.09,
+        "data": "2024-09-22",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 1,
+            "nome": "AUT - Austin"
+        }
+    }, {
+        "id": 7,
+        "documento": "doc-kdow2",
+        "valor": 44.53,
+        "data": "2024-07-13",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 2,
+            "nome": "BST - Boston"
+        }
+    }, {
+        "id": 8,
+        "documento": "doc-dkd231",
+        "valor": 238.99,
+        "data": "2024-03-21",
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "conta": "ITAU02 - 01425-3",
+        "estabelecimento": {
+            "id": 3,
+            "nome": "Atl - Atlanta"
+        }
+    }, {
+        "id": 9,
+        "documento": "doc-dkdow221",
+        "valor": 211.00,
+        "data": "2024-08-22",
+        "fluxo": {
+            "id": "IN",
+            "alias": "Entrada"
+        },
+        "conta": "ITAU01 - 01456-4",
+        "estabelecimento": {
+            "id": 4,
+            "nome": "Ebg - Edinburgh"
+        }
+    }, {
+        "id": 10,
+        "documento": "doc-d923ld0",
+        "valor": 129.93,
+        "data": "2024-08-09",
+        "fluxo": {
+            "id": "OUT",
+            "alias": "Saida"
+        },
+        "conta": "ITAU02 - 01425-3",
+        "estabelecimento": {
+            "id": 5,
+            "nome": "Dnd - Dunedin"
+        }
     }]
 }

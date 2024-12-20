@@ -12,19 +12,19 @@ export default function App() {
     return (
 <div>
     <Nhids />
-    <header>
-        <Navbar />
-    </header>
-    <main>
-        <Router>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/titulos/:id" element={<EditTitulo />} />
-            <Route path="/lancamentos/:id" element={<EditLancamento />} />
-            <Route path="/docs-nao-rateados" element={<DocumentosNaoRateados />} />
-        </Routes>
-        </Router>
-    </main>
+    <Router>
+        <header>
+            <Navbar />
+        </header>
+        <main>        
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/titulos/:id" element={<EditTitulo />} />
+                <Route path="/lancamentos/:id" element={<EditLancamento />} />
+                <Route path="/docs-nao-rateados" element={<DocumentosNaoRateados />} />
+            </Routes>
+        </main>
+    </Router>
 </div>
     );
 }

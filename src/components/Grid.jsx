@@ -5,7 +5,7 @@ import { ObjectUtil } from "../js/utils";
 
 export default function Grid({
     config,
-    gridData,
+    data: gridData,
     pkey,
     dblClick
 }) {
