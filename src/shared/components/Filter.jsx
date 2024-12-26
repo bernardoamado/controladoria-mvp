@@ -27,14 +27,16 @@ function FilterSelection({
         <ul className="filter-selection">
             {options.map((option, i) => (
                 <li key={i}>
-                    <input
-                        type="checkbox"
-                        name={option.attr}
-                        value={option.value}
-                        checked={selectedOptions.includes(option.value)}
-                        onChange={handleCheckboxChange}
-                    />
-                    <label htmlFor={option.attr}>{option.label}</label>
+                    <label className="clickable">
+                        <input
+                            type="checkbox"
+                            name={option.attr}
+                            value={option.value}
+                            checked={selectedOptions.includes(option.value)}
+                            onChange={handleCheckboxChange}
+                        />
+                        <span className="option-label">{option.label}</span>
+                    </label>
                 </li>
             ))}
         </ul>
@@ -56,16 +58,26 @@ function FilterModal({
     return (
         <div className="filter-modal">
             <div className="modal-overlay" onClick={handleModalOverlayClick}>
-                <div className="modal-content">
-                    <h1>{title}</h1>
-                    <FilterSelection 
-                        options={filterOptions}
-                        currentSelection={currentFilterSelection}
-                        applySelection={(newSelection) => setSelectionCallback(newSelection)}
-                    />
-                    <button onClick={closeAction}>Fechar</button>
-                    <button onClick={filterAction}>Filtrar</button>
-                </div>
+                <article className="modal-content">
+                    <header>
+                        <h1>{title}</h1>
+                    </header>
+                    <main>
+                        <FilterSelection 
+                            options={filterOptions}
+                            currentSelection={currentFilterSelection}
+                            applySelection={(newSelection) => setSelectionCallback(newSelection)}
+                        />
+                    </main>
+                    <footer className="flex-container justify-right">
+                        <button
+                            className="action-btn secondary-btn"
+                            onClick={closeAction}>Fechar</button>
+                        <button
+                            className="action-btn primary-btn"
+                            onClick={filterAction}>Filtrar</button>
+                    </footer>
+                </article>
             </div>
         </div>
     );
@@ -122,7 +134,10 @@ function AppliedFiltersList({
             {appliedValues?.map((val, j) => (
                 <li key={j} className="applied-filter"><span>
                     {filterOptions?.filter(op => op.value === val)[0]?.label}
-                    <button onClick={() => removeAppliedFilterCallback(buttonFilter.attr, [val])}>
+                    <button
+                        className="btn-remove-filter"
+                        onClick={() => removeAppliedFilterCallback(buttonFilter.attr, [val])}
+                    >
                         <i className="fa-solid fa-xmark icon"></i>
                     </button>
                 </span></li>

@@ -1,3 +1,16 @@
+.doc-header {
+    display: inline-flex;
+}
+
+.doc-info {
+    font-size: 2em;
+}
+
+.doc-info .card-info {
+    display: flex;
+    flex-direction: column;
+}
+
 .rateios {
     margin: 32px 0px;
     font-size: 1em;

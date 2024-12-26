@@ -12,12 +12,12 @@ export default function NavBar() {
   return (
     <nav className="navbar clearfix">
       <div className="left-floating">
-        <div className="breadcrumbs">
+        <div className="system-label">
           { (!atHome) && <button
             className="back-btn clickable"
             onClick={goToHome}
           ><i className="fa-solid fa-arrow-left"></i></button>}
-          <span id="back-to">Controladoria</span>
+          <span className="system-name">Controladoria</span>
         </div>
       </div>
 

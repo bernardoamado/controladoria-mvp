@@ -25,12 +25,12 @@
     color: var(--icon-color);
 }
 
-.breadcrumbs {
+.system-label {
     font-weight: bold;
     font-size: 1.2rem;
 }
 
-.breadcrumbs .back-btn {
+.system-label .back-btn {
     background-color: transparent;
     border: none;
     height: 32px;
@@ -38,8 +38,16 @@
     border-radius: 16px;
 }
 
-.breadcrumbs .back-btn:hover {
+.system-label .back-btn i {
+    font-size: 1.6em;
+}
+
+.system-label .back-btn:hover {
     background-color: rgba(150, 150, 200, 0.1);
+}
+
+.system-name {
+    padding-left: 8px;
 }
 
 #user-profile {

@@ -77,7 +77,7 @@
     width: auto;
 }
 
-.filters-list-container button,
+.filters-list-container button:not(.action-btn),
 .applied-filter span {
     font-weight: 700;
     font-size: 0.6em;
@@ -93,7 +93,7 @@
     padding-right: 0;
 }
 
-.applied-filter span button {
+.applied-filter span button:not(.action-btn) {
     font-size: 1em;
     padding: 0px 4px;
     margin-left: 2px;
@@ -103,7 +103,6 @@
 .button-filters {
     display: flex;
     gap: 0.3em;
-    /*border: 2px solid blue;*/
 }
 
 .applied-filters.inline-list {
@@ -116,6 +115,10 @@
 
 .filter-selection {
     list-style-type: none;
+}
+
+.option-label {
+    padding-left: 8px;
 }
 
 .modal-overlay {
@@ -131,9 +134,23 @@
 }
 
 .modal-content {
-    top: 100px;
+    position: relative;
+    top: 40px;
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 16px;
+    border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content main {
+    padding: 16px;
+    max-height: 200px;
+}
+
+.modal-content footer {
+    gap: 0.3em;
+}
+
+.modal-content footer .action-btn {
+    border-radius: 16px;
 }

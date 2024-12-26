@@ -5,16 +5,22 @@ import Filter from '../../../shared/components/Filter';
 import useFetch from '../../../shared/hooks/useFetch';
 import NhxUtil from '../../../shared/utils/NhxUtil';
 import ObjectUtil from '../../../shared/utils/ObjectUtil';
-import { atilde, ccedil } from '../../../shared/utils/SpecialChars';
+import {
+    atilde,
+    ccedil,
+    iacute,
+    uacute
+} from '../../../shared/constants';
+import { useBreadcrumbs } from '../../../shared/components/Breadcrumbs';
 
 export default function DocumentosNaoRateados() {
     // ------------------ CONSTANTS -------------------- //
     const apiBaseUrl = 'http://localhost:3001'
     const columnsTitulos = [
-        { id: "numero", header: [{ text: "Numero" }] },
+        { id: "numero", header: [{ text: `N${uacute}mero` }] },
         {
             id: "emissao",
-            header: [{ text: "Data de emissao" }],
+            header: [{ text: `Data de emiss${atilde}o` }],
             type: 'date',
             dateFormat: '%d/%m/%Y',
         },
@@ -34,19 +40,19 @@ export default function DocumentosNaoRateados() {
         { id: 'estabelecimento', header: [{ text: 'Estabelecimento' }] },
         {
             id: 'status',
-            header: [{ text: 'Situacao' }],
+            header: [{ text: `Situa${ccedil}${atilde}o` }],
             template: (cell, row, col) => {
-                return `<span class="warning">A${ccedil}${atilde}o Pendente</span>`;
+                return `<span class="tip warning">A${ccedil}${atilde}o Pendente</span>`;
             },
             htmlEnable: true
-        }
+        },
     ];
     const columnsLancamentos = [
         { id: "documento", header: [{ text: "Documento" }] },
         { id: 'fluxo', header: [{ text: 'Fluxo' }]},
         {
             id: "data",
-            header: [{ text: "Data do lancamento" }],
+            header: [{ text: `Data do lan${ccedil}amento` }],
             type: 'date',
             dateFormat: '%d/%m/%Y',
         },
@@ -58,13 +64,19 @@ export default function DocumentosNaoRateados() {
             numberMask: NhxUtil.currencyMask
         },
         { id: 'estabelecimento', header: [{ text: 'Estabelecimento' }] },
+        {
+            id: 'status',
+            header: [{ text: `Situa${ccedil}${atilde}o` }],
+            template: (cell, row, col) => {
+                return `<span class="tip warning">A${ccedil}${atilde}o Pendente</span>`;
+            },
+            htmlEnable: true
+        }
     ];
     const sharedFilters = [
         {
             attr: 'estabelecimento',
             label: 'Estabelecimento',
-            wildcard: true,
-            single: false,
             options: [
                 { value: '1', label: 'Austin' },
                 { value: '2', label: 'Boston' },
@@ -76,8 +88,6 @@ export default function DocumentosNaoRateados() {
         {
             attr: 'fluxo',
             label: 'Fluxo',
-            wildcard: false,
-            single: true,
             options: [
                 { value: 'IN', label: 'Entrada' },
                 { value: 'OUT', label: 'Saida'}
@@ -87,17 +97,18 @@ export default function DocumentosNaoRateados() {
     const filterConfig = [
         {
             id: 'titulos',
-            label: 'Por titulo',
+            label: `T${iacute}tulo`,
             fields: [
-                {attr: 'numero', label: 'Numero', wildcard: true, single: false},
+                {attr: 'numero', label: `N${uacute}mero`, wildcard: true},
                 ...sharedFilters
             ]
         },
         {
             id: 'lancamentoscontas',
-            label: 'Por lancamento',
+            label: `Lan${ccedil}amento`,
             fields: [
-                {attr: 'documento', label: 'Documento', wildcard: true, single: false},
+                {attr: 'documento', label: 'Documento', wildcard: true},
+                {attr: 'conta', label: 'Conta', wildcard: true},
                 ...sharedFilters
             ]
         }
@@ -155,9 +166,10 @@ export default function DocumentosNaoRateados() {
         resizable: true,
     }), [doctype]);
     const pkField = useMemo(
-        () => (doctype === 'lancamentoscontas') ? 'lancamentoconta': 'id',
+        () => (doctype === 'lancamentoscontas') ? 'id': 'id',
         [doctype]
     );
+    const { updateBreadcrumbs } = useBreadcrumbs();
 
     useEffect(() => {
         if (filterConditions?.infoId === 'titulos')
@@ -171,15 +183,19 @@ export default function DocumentosNaoRateados() {
             setUrl(`${apiBaseUrl}/${endpoint(filterConditions)}`);
         }
     }, [filterConditions?.infoId]);
+    useEffect(() => updateBreadcrumbs([
+        { label: `Documentos n${atilde}o rateados`, endpoint: '/docs-nao-rateados' }
+    ]), []);
 
     // ------------------------------------------------- //
 
-    const gridDblClick = (row, col, event) => {
-        if (gridData && gridData.length) {
-            const doc = gridData.filter(d => d[pkField] === row[pkField])[0];
-            if (doc)
-                navigate(`/${doctype}/${doc[pkField]}`)
-        }
+    const handleNavigate = (row, ...args) => {
+        const newEndpoint = `/${doctype}/${row[pkField]}`;
+        updateBreadcrumbs(crumbs => [
+            ...crumbs,
+            { label: 'Dados do documento', endpoint: newEndpoint }
+        ]);
+        navigate(newEndpoint);
     };
     
     return (
@@ -195,7 +211,7 @@ export default function DocumentosNaoRateados() {
             && <Grid
                 data={gridData}
                 config={gridConfig}
-                dblClick={gridDblClick}
+                dblClick={handleNavigate}
             /> }
         </div>
     );
