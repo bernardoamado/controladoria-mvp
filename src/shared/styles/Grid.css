@@ -39,3 +39,20 @@
 .dhx_grid_border .dhx_grid-cell:last-child {
     border-right: none;
 }
+
+.card-status {
+    border-radius: 10px;
+    text-align: center;
+    padding: 4px 16px;
+    font-size: 0.5rem;
+    font-weight: bold;
+}
+
+.card-status.warning {
+    background-color: var(--warning-color);
+}
+
+.card-status.success {
+    background-color: var(--success-color);
+    color: var(--bgnd-color)
+}

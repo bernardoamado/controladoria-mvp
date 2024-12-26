@@ -1,74 +1,136 @@
 {
+    "centroscustos": [
+        {
+            "centrocusto": 23,
+            "codigo": "CC-23",
+            "descricao": "Centro de Custo 23"
+        }
+    ],
+    "classificacoesfinanceiras": [
+        {
+            "classificacaofinanceira": 1,
+            "codigo": "CF.01",
+            "descricao": "Class. Fin. 01"
+        },
+        {
+            "classificacaofinanceira": 2,
+            "codigo": "CF.02",
+            "descricao": "Class. Fin. 02"
+        },
+        {
+            "classificacaofinanceira": 3,
+            "codigo": "CF.03",
+            "descricao": "Classificacao Financeira 03"
+        },
+        {
+            "classificacaofinanceira": 4,
+            "codigo": "CF.04",
+            "descricao": "Class. Fin. 04"
+        },
+        {
+            "classificacaofinanceira": 5,
+            "codigo": "CF.05",
+            "descricao": "Class. Fin. 05"
+        },
+        {
+            "classificacaofinanceira": 6,
+            "codigo": "CF.06",
+            "descricao": "Class. Fin. 06"
+        },
+        {
+            "classificacaofinanceira": 7,
+            "codigo": "CF.07",
+            "descricao": "Class. Fin. 07"
+        },
+        {
+            "classificacaofinanceira": 8,
+            "codigo": "CF.08",
+            "descricao": "Class. Fin. 08"
+        },
+        {
+            "classificacaofinanceira": 9,
+            "codigo": "CF.09",
+            "descricao": "Class. Fin. 09"
+        },
+        {
+            "classificacaofinanceira": 10,
+            "codigo": "CF.10",
+            "descricao": "Class. Fin. 10"
+        }
+    ],
+    "projetos": [
+        {
+            "projeto": 7,
+            "codigo": "PR-07",
+            "nome": "Projeto 07"
+        },
+        {
+            "projeto": 8,
+            "codigo": "PR-08",
+            "nome": "Projeto 08"
+        },
+        {
+            "projeto": 9,
+            "codigo": "PR-09",
+            "nome": "Projeto 09"
+        }
+    ],
+    "estabelecimentos": [
+        {
+            "estabelecimento": 2,
+            "codigo": "BST",
+            "descricao": "Boston"
+        },
+        {
+            "estabelecimento": 3,
+            "codigo": "Atl",
+            "descricao":  "Atlanta"
+        }
+    ],
     "titulos": [{
         "id": 1,
         "numero": "abc123",
         "valor": 189.09,
         "emissao": "2024-01-12",
         "vencimento": "2024-01-31",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
+        "fluxo": "IN",
         "estabelecimento": {
-            "id": 1,
-            "nome": "AUT - Austin"
+            "estabelecimento": 1,
+            "codigo": "AUT",
+            "descricao": "Austin"
         },
         "rateios": {
             "documentorateado": {
-                "id": 1,
+                "documentorateado": 1,
                 "valor": 189.09
             },
             "classificacoesfinanceiras": [
                 {
-                    "classificacaofinanceira": {
-                        "id": 3,
-                        "codigo": "CF-03",
-                        "descricao": "Class. Fin. 03"
-                    },
+                    "classificacaofinanceira": 3,
                     "valor": 100
                 },
                 {
-                    "classificacaofinanceira": {
-                        "id": 4,
-                        "codigo": "CF-04",
-                        "descricao": "Class. Fin. 04"
-                    },
+                    "classificacaofinanceira": 4,
                     "valor": 89.09
                 }
             ],
             "centroscustos": [
                 {
-                    "centrocusto": {
-                        "id": 23,
-                        "codigo": "CC-23",
-                        "descricao": "Centro de Custo 23"
-                    },
+                    "centrocusto": 23,
                     "valor": 189.09
                 }
             ],
             "projetos": [
                 {
-                    "projeto": {
-                        "id": 7,
-                        "codigo": "PR-07",
-                        "nome": "Projeto 07"
-                    },
+                    "projeto": 7,
                     "valor": 50
                 },
                 {
-                    "projeto": {
-                        "id": 8,
-                        "codigo": "PR-08",
-                        "nome": "Projeto 08"
-                    },
+                    "projeto": 8,
                     "valor": 100
                 },
                 {
-                    "projeto": {
-                        "id": 9,
-                        "codigo": "PR-09",
-                        "nome": "Projeto 09"
-                    },
+                    "projeto": 9,
                     "valor": 39.09
                 }
             ]
@@ -79,13 +141,11 @@
         "valor": 2234233445.5067,
         "emissao": "2024-01-23",
         "vencimento": "2024-01-31",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
+        "fluxo": "IN",
         "estabelecimento": {
-            "id": 2,
-            "nome": "BST - Boston"
+            "estabelecimento": 2,
+            "codigo": "BST",
+            "descricao": "Boston"
         }
     }, {
         "id": 3,
@@ -93,13 +153,11 @@
         "valor": 229.59,
         "emissao": "2024-03-03",
         "vencimento": "2024-03-31",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
+        "fluxo": "OUT",
         "estabelecimento": {
-            "id": 3,
-            "nome": "Atl - Atlanta"
+            "estabelecimento": 3,
+            "codigo": "Atl",
+            "descricao":  "Atlanta"
         }
     }, {
         "id": 4,
@@ -107,13 +165,11 @@
         "valor": 230.49,
         "emissao": "2024-11-12",
         "vencimento": "2024-11-30",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
+        "fluxo": "IN",
         "estabelecimento": {
-            "id": 4,
-            "nome": "Ebg - Edinburgh"
+            "estabelecimento": 4,
+            "codigo": "Ebg",
+            "descricao": "Edinburgh"
         }
     }, {
         "id": 5,
@@ -121,13 +177,11 @@
         "valor": 139.90,
         "emissao": "2024-06-12",
         "vencimento": "2024-06-30",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
+        "fluxo": "OUT",
         "estabelecimento": {
-            "id": 5,
-            "nome": "Dnd - Dunedin"
+            "estabelecimento": 5,
+            "codigo": "Dnd",
+            "descricao":  "Dunedin"
         }
     }],
     "lancamentoscontas": [{
@@ -143,7 +197,8 @@
         "estabelecimento": {
             "id": 1,
             "nome": "AUT - Austin"
-        }
+        },
+        "rateios": []
     }, {
         "id": 2,
         "documento": "doc-kwy888",

@@ -12,20 +12,21 @@ export default function Rateios({
     dados,
     valorTotal
 }) {
-    const [rateios, setRateios] = useState(dados.map((d, i) => ({
-        ...d,
-        _id: i
-    })));
-    const addRateio = () => setRateios(prev => [...rateios, {
-        _id: prev.length,
-        [campoId]: '',
-        valor: 0
-    }]);
+    const mapId = (arr) => (arr || []).map((d, i) => ({...d, _id: i}));
+
+    const [rateios, setRateios] = useState(mapId(dados));
+    const addRateio = () => setRateios(prev => [
+        ...prev,
+        {
+            _id: prev.length,
+            [campoId]: '',
+            valor: 0
+        }
+    ]);
     const removeRateio = (id) => setRateios(
-        rateios
-            .filter(r => r._id !== id)
-            .map((r, i) => ({...r, _id: i}))
+        prev => mapId(prev.filter(r => r._id !== id))
     );
+
     const afterEdit = (value, row, col) => {
         switch (col.id) {
             case 'percent':
@@ -56,6 +57,7 @@ export default function Rateios({
                         return 'Selecione';
                 },
                 editable: true,
+                tooltip: true,
                 minWidth: 200,
             },
             {
@@ -85,19 +87,16 @@ export default function Rateios({
                 header: [{ text: '' }],
                 maxWidth: 40,
                 align: 'center',
-                template: (cell, row, col) => {
-                    return '<button class="delete-apport tertiary-btn danger btn__remove">'
-                        + '<i class="fa-solid fa-xmark"></i>'
-                        + '</button>';
-                },
+                template: (cell, row, col) => ''
+                    + '<button class="delete-apport tertiary-btn danger btn__remove">'
+                    +   '<i class="fa-solid fa-xmark"></i>'
+                    + '</button>',
                 htmlEnable: true
             }
         ],
         eventHandlers: {
             onclick: {
-                btn__remove: function(event, data) {
-                    removeRateio(data.row._id);
-                }
+                btn__remove: (event, data) => removeRateio(data.row._id)
             }
         },
         tooltip: false,
@@ -113,7 +112,6 @@ export default function Rateios({
             <Grid
                 config={gridConfig}
                 data={rateios}
-                pkey={'_id'}
                 afterEdit={afterEdit}
             />
         </div>

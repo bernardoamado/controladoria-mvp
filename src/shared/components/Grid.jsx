@@ -6,21 +6,31 @@ import '../styles/Grid.css';
 export default function Grid({
     config,
     data: gridData,
-    pkey,
     dblClick,
+    click,
     afterEdit
 }) {
     const [grid, setGrid] = useState(null);
     const gNode = useRef(null);
-    const pk = (obj) => (pkey) ? obj[pkey] : obj[Object.keys(obj)[0]];
 
     useEffect(() => {
         const newGrid = new DhxGrid(gNode.current, config);
-        if (afterEdit)
-            newGrid.events.on('afterEditEnd', (...args) => {
-                afterEdit(...args);
-                console.log('grid data', newGrid.data);
+        
+        const editableCols = newGrid.config.columns
+            .filter(col => col.editable)
+            .map(col => col.id);
+        if (editableCols && (editableCols.length))
+            newGrid.events.on('cellClick', (row, col, event) => {
+                if (editableCols.includes(col.id))
+                    newGrid.editCell(row.id, col.id);
             });
+
+        if (afterEdit)
+            newGrid.events.on('afterEditEnd', afterEdit);
+        if (click)
+            newGrid.events.on('cellClick', click);
+        if (dblClick)
+            newGrid.events.on('cellDblClick', dblClick);
         setGrid(newGrid);
 
         // Cleanup
@@ -28,14 +38,9 @@ export default function Grid({
     }, [config]);
 
     useEffect(() => {
-        grid?.data.parse(ObjectUtil.copy(gridData));
-        if (dblClick) {
-            grid?.events.detach('cellDblClick');
-            grid?.events.on('cellDblClick', (row, column, event) => {
-                dblClick(gridData.filter(d => pk(d) === pk(row))[0]);
-            });
-        }
-    }, [gridData, grid])
+        if (gridData && grid)
+            grid.data.parse(ObjectUtil.copy(gridData));
+    }, [gridData, grid]);
 
     return <div className="nhids-grid-container" ref={gNode}></div>;
 }

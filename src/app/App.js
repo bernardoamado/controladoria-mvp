@@ -2,16 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "@dhx/trial-suite/codebase/suite.min.css";
 import Home from './pages/Home';
-import EditTitulo from './pages/EditTitulo';
-import EditLancamento from './pages/EditLancamento';
-import DocumentosNaoRateados from './pages/DocumentosNaoRateados';
-import Navbar from './components/Navbar';
-import Nhids from './components/Nhids';
+import Titulo from '../shared/pages/Titulo';
+import DocumentosNaoRateados from '../features/documentosNaoRateados/pages/DocumentosNaoRateados';
+import Navbar from '../shared/components/Navbar';
+import Nhids from './theme/Nhids';
+import Lancamento from '../shared/pages/Lancamentos';
 
 export default function App() {
     return (
-<div>
-    <Nhids />
+<Nhids>
     <Router>
         <header>
             <Navbar />
@@ -19,12 +18,12 @@ export default function App() {
         <main>        
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/titulos/:id" element={<EditTitulo />} />
-                <Route path="/lancamentos/:id" element={<EditLancamento />} />
+                <Route path="/titulos/:id" element={<Titulo />} />
+                <Route path='/lancamentos/:id' element={<Lancamento />} />
                 <Route path="/docs-nao-rateados" element={<DocumentosNaoRateados />} />
             </Routes>
         </main>
     </Router>
-</div>
+</Nhids>
     );
 }

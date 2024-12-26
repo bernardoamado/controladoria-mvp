@@ -5,11 +5,12 @@ import { atilde, ccedil } from "../utils/SpecialChars";
 import "../styles/DocumentoRateavel.css";
 
 export default function Titulo() {
+    const apiBaseUrl = 'http://localhost:3001'
     const { id } = useParams();
-    const { data: titulo, isLoading, error } = useFetch(`http://localhost:3001/titulos/${id}`);
-    const { data: classfins, cfIsLoading, cfError} = useFetch('http://localhost:3001/classificacoesfinanceiras');
-    const { data: centroscustos, ccIsLoading, ccError} = useFetch('http://localhost:3001/centroscustos');
-    const { data: projetos, prIsLoading, prError} = useFetch('http://localhost:3001/projetos');
+    const { data: titulo, isLoading, error } = useFetch(`${apiBaseUrl}/titulos/${id}`);
+    const { data: classfins, cfIsLoading, cfError} = useFetch(`${apiBaseUrl}/classificacoesfinanceiras`);
+    const { data: centroscustos, ccIsLoading, ccError} = useFetch(`${apiBaseUrl}/centroscustos`);
+    const { data: projetos, prIsLoading, prError} = useFetch(`${apiBaseUrl}/projetos`);
     const rateios = [{
         label: `Classifica${ccedil}${atilde}o Financeira`,
         codigo: 'codigo',
@@ -37,7 +38,7 @@ export default function Titulo() {
         data: titulo?.rateios?.projetos,
         isLoading: prIsLoading,
         error: prError
-    },];
+    }];
     return (
         <div className="page">
             <h2>Editar t&iacute;tulo</h2>

@@ -27,6 +27,14 @@
     border-color: rgba(238, 238, 238, 0.5);
 }
 
+/*.inline-list.not-flex {
+    display: inline-block;
+}
+
+.rateios .inline-list.not-flex li {
+    max-width: 400px;
+}*/
+
 /*.rateios .inline-list li {
     flex-grow: 1;
 }*/
