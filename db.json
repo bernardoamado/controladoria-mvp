@@ -1,329 +1,445 @@
 {
-    "centroscustos": [
-        {
-            "centrocusto": 23,
-            "codigo": "CC-23",
-            "descricao": "Centro de Custo 23"
-        }
-    ],
-    "classificacoesfinanceiras": [
-        {
-            "classificacaofinanceira": 1,
-            "codigo": "CF.01",
-            "descricao": "Class. Fin. 01"
+  "centroscustos": [
+    {
+      "centrocusto": 23,
+      "codigo": "CC-23",
+      "descricao": "Centro de Custo 23",
+      "id": "84c0"
+    }
+  ],
+  "classificacoesfinanceiras": [
+    {
+      "classificacaofinanceira": 1,
+      "codigo": "CF.01",
+      "descricao": "Class. Fin. 01",
+      "id": "bfe3"
+    },
+    {
+      "classificacaofinanceira": 2,
+      "codigo": "CF.02",
+      "descricao": "Class. Fin. 02",
+      "id": "d1ae"
+    },
+    {
+      "classificacaofinanceira": 3,
+      "codigo": "CF.03",
+      "descricao": "Classificacao Financeira 03",
+      "id": "7255"
+    },
+    {
+      "classificacaofinanceira": 4,
+      "codigo": "CF.04",
+      "descricao": "Class. Fin. 04",
+      "id": "e163"
+    },
+    {
+      "classificacaofinanceira": 5,
+      "codigo": "CF.05",
+      "descricao": "Class. Fin. 05",
+      "id": "4590"
+    },
+    {
+      "classificacaofinanceira": 6,
+      "codigo": "CF.06",
+      "descricao": "Class. Fin. 06",
+      "id": "895b"
+    },
+    {
+      "classificacaofinanceira": 7,
+      "codigo": "CF.07",
+      "descricao": "Class. Fin. 07",
+      "id": "b2a9"
+    },
+    {
+      "classificacaofinanceira": 8,
+      "codigo": "CF.08",
+      "descricao": "Class. Fin. 08",
+      "id": "2c65"
+    },
+    {
+      "classificacaofinanceira": 9,
+      "codigo": "CF.09",
+      "descricao": "Class. Fin. 09",
+      "id": "f121"
+    },
+    {
+      "classificacaofinanceira": 10,
+      "codigo": "CF.10",
+      "descricao": "Class. Fin. 10",
+      "id": "fd94"
+    }
+  ],
+  "projetos": [
+    {
+      "projeto": 7,
+      "codigo": "PR-07",
+      "nome": "Projeto 07",
+      "id": "2f0d"
+    },
+    {
+      "projeto": 8,
+      "codigo": "PR-08",
+      "nome": "Projeto 08",
+      "id": "1ab3"
+    },
+    {
+      "projeto": 9,
+      "codigo": "PR-09",
+      "nome": "Projeto 09",
+      "id": "f8c0"
+    }
+  ],
+  "contas": [
+    {
+      "conta": 1,
+      "codigo": "ITAU01",
+      "numero": "01456-4"
+    },
+    {
+      "conta": 2,
+      "codigo": "ITAU02",
+      "numero": "01425-3"
+    }
+  ],
+  "estabelecimentos": [
+    {
+      "estabelecimento": 2,
+      "codigo": "BST",
+      "descricao": "Boston",
+      "id": "962a"
+    },
+    {
+      "estabelecimento": 3,
+      "codigo": "Atl",
+      "descricao": "Atlanta",
+      "id": "5698"
+    }
+  ],
+  "titulos": [
+    {
+      "id": "1",
+      "numero": "abc123",
+      "valor": 189.09,
+      "emissao": "2024-01-12",
+      "competencia": "2024-02-01",
+      "vencimento": "2024-01-31",
+      "fluxo": "IN",
+      "estabelecimento": {
+        "estabelecimento": 1,
+        "codigo": "AUT",
+        "descricao": "Austin"
+      },
+      "rateios": {
+        "documentorateado": {
+          "documentorateado": 1,
+          "valor": 189.09
         },
-        {
-            "classificacaofinanceira": 2,
-            "codigo": "CF.02",
-            "descricao": "Class. Fin. 02"
-        },
-        {
+        "classificacoesfinanceiras": [
+          {
             "classificacaofinanceira": 3,
-            "codigo": "CF.03",
-            "descricao": "Classificacao Financeira 03"
-        },
-        {
+            "valor": 100
+          },
+          {
             "classificacaofinanceira": 4,
-            "codigo": "CF.04",
-            "descricao": "Class. Fin. 04"
-        },
-        {
-            "classificacaofinanceira": 5,
-            "codigo": "CF.05",
-            "descricao": "Class. Fin. 05"
-        },
-        {
-            "classificacaofinanceira": 6,
-            "codigo": "CF.06",
-            "descricao": "Class. Fin. 06"
-        },
-        {
-            "classificacaofinanceira": 7,
-            "codigo": "CF.07",
-            "descricao": "Class. Fin. 07"
-        },
-        {
-            "classificacaofinanceira": 8,
-            "codigo": "CF.08",
-            "descricao": "Class. Fin. 08"
-        },
-        {
-            "classificacaofinanceira": 9,
-            "codigo": "CF.09",
-            "descricao": "Class. Fin. 09"
-        },
-        {
-            "classificacaofinanceira": 10,
-            "codigo": "CF.10",
-            "descricao": "Class. Fin. 10"
-        }
-    ],
-    "projetos": [
-        {
+            "valor": 89.09
+          }
+        ],
+        "centroscustos": [
+          {
+            "centrocusto": 23,
+            "valor": 189.09
+          }
+        ],
+        "projetos": [
+          {
             "projeto": 7,
-            "codigo": "PR-07",
-            "nome": "Projeto 07"
-        },
-        {
+            "valor": 50
+          },
+          {
             "projeto": 8,
-            "codigo": "PR-08",
-            "nome": "Projeto 08"
-        },
-        {
+            "valor": 100
+          },
+          {
             "projeto": 9,
-            "codigo": "PR-09",
-            "nome": "Projeto 09"
-        }
-    ],
-    "estabelecimentos": [
-        {
-            "estabelecimento": 2,
-            "codigo": "BST",
-            "descricao": "Boston"
+            "valor": 39.09
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "numero": "kwy888",
+      "valor": 200,
+      "emissao": "2024-01-23",
+      "competencia": "2024-02-01",
+      "vencimento": "2024-01-31",
+      "fluxo": "IN",
+      "estabelecimento": {
+        "estabelecimento": 2,
+        "codigo": "BST",
+        "descricao": "Boston"
+      },
+      "rateios": {
+        "documentorateado": {
+          "documentorateado": 101,
+          "valor": 200
         },
-        {
-            "estabelecimento": 3,
-            "codigo": "Atl",
-            "descricao":  "Atlanta"
-        }
-    ],
-    "titulos": [{
+        "classificacoesfinanceiras": [
+          {
+            "classificacaofinanceira": 5,
+            "valor": 100
+          },
+          {
+            "classificacaofinanceira": 6,
+            "valor": 90
+          },
+          {
+            "classificacaofinanceira": 8,
+            "valor": 10
+          }
+        ],
+        "centroscustos": [
+          {
+            "centrocusto": 23,
+            "valor": 200
+          }
+        ],
+        "projetos": [
+          {
+            "projeto": 7,
+            "valor": 50
+          },
+          {
+            "projeto": 9,
+            "valor": 150
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "numero": "def456",
+      "valor": 229.59,
+      "emissao": "2024-03-03",
+      "competencia": "2024-04-01",
+      "vencimento": "2024-03-31",
+      "fluxo": "OUT",
+      "estabelecimento": {
+        "estabelecimento": 3,
+        "codigo": "Atl",
+        "descricao": "Atlanta"
+      }
+    },
+    {
+      "id": "4",
+      "numero": "ghi789",
+      "valor": 230.49,
+      "emissao": "2024-11-12",
+      "competencia": "2024-12-01",
+      "vencimento": "2024-11-30",
+      "fluxo": "IN",
+      "estabelecimento": {
+        "estabelecimento": 4,
+        "codigo": "Ebg",
+        "descricao": "Edinburgh"
+      }
+    },
+    {
+      "id": "5",
+      "numero": "zzz000",
+      "valor": 139.9,
+      "emissao": "2024-06-12",
+      "competencia": "2024-07-01",
+      "vencimento": "2024-06-30",
+      "fluxo": "OUT",
+      "estabelecimento": {
+        "estabelecimento": 5,
+        "codigo": "Dnd",
+        "descricao": "Dunedin"
+      }
+    }
+  ],
+  "lancamentoscontas": [
+    {
+      "id": "1",
+      "documento": "doc-abc123",
+      "valor": 189.09,
+      "historico": "Historico pequeno.",
+      "data": "2024-01-12",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 1,
-        "numero": "abc123",
-        "valor": 189.09,
-        "emissao": "2024-01-12",
-        "vencimento": "2024-01-31",
-        "fluxo": "IN",
-        "estabelecimento": {
-            "estabelecimento": 1,
-            "codigo": "AUT",
-            "descricao": "Austin"
-        },
-        "rateios": {
-            "documentorateado": {
-                "documentorateado": 1,
-                "valor": 189.09
-            },
-            "classificacoesfinanceiras": [
-                {
-                    "classificacaofinanceira": 3,
-                    "valor": 100
-                },
-                {
-                    "classificacaofinanceira": 4,
-                    "valor": 89.09
-                }
-            ],
-            "centroscustos": [
-                {
-                    "centrocusto": 23,
-                    "valor": 189.09
-                }
-            ],
-            "projetos": [
-                {
-                    "projeto": 7,
-                    "valor": 50
-                },
-                {
-                    "projeto": 8,
-                    "valor": 100
-                },
-                {
-                    "projeto": 9,
-                    "valor": 39.09
-                }
-            ]
-        }
-    }, {
+        "codigo": "AUT",
+        "descricao": "Austin"
+      },
+      "rateios": []
+    },
+    {
+      "id": "2",
+      "documento": "doc-kwy888",
+      "valor": 445.5,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-01-23",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 2,
-        "numero": "kwy888",
-        "valor": 2234233445.5067,
-        "emissao": "2024-01-23",
-        "vencimento": "2024-01-31",
-        "fluxo": "IN",
-        "estabelecimento": {
-            "estabelecimento": 2,
-            "codigo": "BST",
-            "descricao": "Boston"
-        }
-    }, {
+        "codigo": "BST",
+        "descricao": "Boston"
+      }
+    },
+    {
+      "id": "3",
+      "documento": "doc-def456",
+      "valor": 229.59,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-03-03",
+      "fluxo": "OUT",
+      "conta": {
+        "conta": 2,
+        "codigo": "ITAU02",
+        "numero": "01425-3"
+      },
+      "estabelecimento": {
         "id": 3,
-        "numero": "def456",
-        "valor": 229.59,
-        "emissao": "2024-03-03",
-        "vencimento": "2024-03-31",
-        "fluxo": "OUT",
-        "estabelecimento": {
-            "estabelecimento": 3,
-            "codigo": "Atl",
-            "descricao":  "Atlanta"
-        }
-    }, {
+        "codigo": "Atl",
+        "descricao": "Atlanta"
+      }
+    },
+    {
+      "id": "4",
+      "documento": "doc-ghi789",
+      "valor": 230.49,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-11-12",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 4,
-        "numero": "ghi789",
-        "valor": 230.49,
-        "emissao": "2024-11-12",
-        "vencimento": "2024-11-30",
-        "fluxo": "IN",
-        "estabelecimento": {
-            "estabelecimento": 4,
-            "codigo": "Ebg",
-            "descricao": "Edinburgh"
-        }
-    }, {
+        "codigo": "Ebg",
+        "descricao": "Edinburgh"
+      }
+    },
+    {
+      "id": "5",
+      "documento": "doc-zzz000",
+      "valor": 139.9,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-06-12",
+      "fluxo": "OUT",
+      "conta": {
+        "conta": 2,
+        "codigo": "ITAU02",
+        "numero": "01425-3"
+      },
+      "estabelecimento": {
         "id": 5,
-        "numero": "zzz000",
-        "valor": 139.90,
-        "emissao": "2024-06-12",
-        "vencimento": "2024-06-30",
-        "fluxo": "OUT",
-        "estabelecimento": {
-            "estabelecimento": 5,
-            "codigo": "Dnd",
-            "descricao":  "Dunedin"
-        }
-    }],
-    "lancamentoscontas": [{
+        "codigo": "Dnd",
+        "descricao": "Dunedin"
+      }
+    },
+    {
+      "id": "6",
+      "documento": "doc-adi20d3",
+      "valor": 1389.09,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-09-22",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 1,
-        "documento": "doc-abc123",
-        "valor": 189.09,
-        "data": "2024-01-12",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 1,
-            "nome": "AUT - Austin"
-        },
-        "rateios": []
-    }, {
+        "codigo": "AUT",
+        "descricao": "Austin"
+      }
+    },
+    {
+      "id": "7",
+      "documento": "doc-kdow2",
+      "valor": 44.53,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-07-13",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 2,
-        "documento": "doc-kwy888",
-        "valor": 445.50,
-        "data": "2024-01-23",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 2,
-            "nome": "BST - Boston"
-        }
-    }, {
+        "codigo": "BST",
+        "descricao": "Boston"
+      }
+    },
+    {
+      "id": "8",
+      "documento": "doc-dkd231",
+      "valor": 238.99,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-03-21",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 2,
+        "codigo": "ITAU02",
+        "numero": "01425-3"
+      },
+      "estabelecimento": {
         "id": 3,
-        "documento": "doc-def456",
-        "valor": 229.59,
-        "data": "2024-03-03",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
-        "conta": "ITAU02 - 01425-3",
-        "estabelecimento": {
-            "id": 3,
-            "nome": "Atl - Atlanta"
-        }
-    }, {
+        "codigo": "Atl",
+        "descricao": "Atlanta"
+      }
+    },
+    {
+      "id": "9",
+      "documento": "doc-dkdow221",
+      "valor": 211,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-08-22",
+      "fluxo": "IN",
+      "conta": {
+        "conta": 1,
+        "codigo": "ITAU01",
+        "numero": "01456-4"
+      },
+      "estabelecimento": {
         "id": 4,
-        "documento": "doc-ghi789",
-        "valor": 230.49,
-        "data": "2024-11-12",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 4,
-            "nome": "Ebg - Edinburgh"
-        }
-    }, {
+        "codigo": "Ebg",
+        "descricao": "Edinburgh"
+      }
+    },
+    {
+      "id": "10",
+      "documento": "doc-d923ld0",
+      "valor": 129.93,
+      "historico": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "data": "2024-08-09",
+      "fluxo": "OUT",
+      "conta": {
+        "conta": 2,
+        "codigo": "ITAU02",
+        "numero": "01425-3"
+      },
+      "estabelecimento": {
         "id": 5,
-        "documento": "doc-zzz000",
-        "valor": 139.90,
-        "data": "2024-06-12",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
-        "conta": "ITAU02 - 01425-3",
-        "estabelecimento": {
-            "id": 5,
-            "nome": "Dnd - Dunedin"
-        }
-    }, {
-        "id": 6,
-        "documento": "doc-adi20d3",
-        "valor": 1389.09,
-        "data": "2024-09-22",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 1,
-            "nome": "AUT - Austin"
-        }
-    }, {
-        "id": 7,
-        "documento": "doc-kdow2",
-        "valor": 44.53,
-        "data": "2024-07-13",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 2,
-            "nome": "BST - Boston"
-        }
-    }, {
-        "id": 8,
-        "documento": "doc-dkd231",
-        "valor": 238.99,
-        "data": "2024-03-21",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
-        "conta": "ITAU02 - 01425-3",
-        "estabelecimento": {
-            "id": 3,
-            "nome": "Atl - Atlanta"
-        }
-    }, {
-        "id": 9,
-        "documento": "doc-dkdow221",
-        "valor": 211.00,
-        "data": "2024-08-22",
-        "fluxo": {
-            "id": "IN",
-            "alias": "Entrada"
-        },
-        "conta": "ITAU01 - 01456-4",
-        "estabelecimento": {
-            "id": 4,
-            "nome": "Ebg - Edinburgh"
-        }
-    }, {
-        "id": 10,
-        "documento": "doc-d923ld0",
-        "valor": 129.93,
-        "data": "2024-08-09",
-        "fluxo": {
-            "id": "OUT",
-            "alias": "Saida"
-        },
-        "conta": "ITAU02 - 01425-3",
-        "estabelecimento": {
-            "id": 5,
-            "nome": "Dnd - Dunedin"
-        }
-    }]
+        "codigo": "Dnd",
+        "descricao": "Dunedin"
+      }
+    }
+  ]
 }

@@ -1,9 +1,11 @@
 .doc-header {
-    display: inline-flex;
+    display: flex;
+    gap: 2em;
+    padding: 16px 0;
 }
 
 .doc-info {
-    font-size: 2em;
+    font-size: 1.6em;
 }
 
 .doc-info .card-info {
@@ -22,7 +24,7 @@
     align-items: center;
 }
 
-.rateios header p {
+.rateios header h1 {
     color: rgba(120, 120, 120, 0.4);
     font-weight: bold;
     font-size: 1em;
@@ -36,18 +38,25 @@
     flex-grow: 1;
     height: 0px;
     margin: 0px 16px;
-    margin-right: 64px;
+    margin-right: 0px;
     border-color: rgba(238, 238, 238, 0.5);
 }
 
-/*.inline-list.not-flex {
-    display: inline-block;
+.rateios .inline-list {
+    gap: 1rem;
+    justify-content: space-between;
 }
 
-.rateios .inline-list.not-flex li {
-    max-width: 400px;
-}*/
+.primary-data {
+    font-weight: bold;
+    color: var(--primary-color);
+}
 
-/*.rateios .inline-list li {
+.action-buttons {
     flex-grow: 1;
-}*/
+}
+
+.action-buttons .inline-list {
+    justify-content: flex-end;
+    gap: 0.5em
+}

@@ -22,7 +22,7 @@
 .primary-btn {
     background-color: var(--primary-color);
     color: var(--bgnd-color);
-    border: none;
+    border-color: var(--primary-color);
 }
 
 .secondary-btn {
@@ -46,6 +46,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 
 html {
@@ -185,9 +186,30 @@ input:disabled:hover, input[readonly="readonly"] {
 
 .tip.warning {
     background-color: var(--warning-color);
+    border: 1px solid var(--warning-color);
 }
 
 .tip.success {
     background-color: var(--success-color);
+    border: 1px solid var(--success-color);
     color: var(--bgnd-color)
+}
+
+.tip.primary {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tip.text-warning {
+    border: 1px solid var(--warning-text-color);
+    color: var(--warning-text-color);
+}
+
+button.danger > i {
+    color: var(--danger-color);
+}
+
+.transparent-btn {
+    border: none;
+    background-color: transparent;
 }

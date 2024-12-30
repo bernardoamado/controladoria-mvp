@@ -14,7 +14,7 @@ export default function Grid({
     const gNode = useRef(null);
 
     useEffect(() => {
-        const newGrid = new DhxGrid(gNode.current, config);
+        const newGrid = new DhxGrid(gNode.current, config || {});
         
         const editableCols = newGrid.config.columns
             .filter(col => col.editable)

@@ -1,8 +1,16 @@
 .container-apports {
     margin-top: 32px;
-    /*max-width: 560px;*/
     min-width: 416px;
+    /*max-width: 560px;*/
 }
+
+/*.container-apports.single {
+    min-width: 208px;
+}
+
+.container-apports.multi {
+    min-width: 416px;
+}*/
 
 .container-apports button,
 .container-apports select {
@@ -15,11 +23,6 @@
 
 .apports-action {
     font-size: 0.7em;
-}
-
-.rateios .inline-list {
-    gap: 1rem;
-    justify-content: space-evenly;
 }
 
 .container-apports header {
@@ -39,4 +42,38 @@
 
 .dhx_popup-content .dhx_list-item {
     height: auto !important;
+}
+
+.combo-content {
+    /*border: 2px solid red;*/
+    width: 100%;
+}
+
+.combo-content li {
+    /*border: 2px solid green;*/
+    overflow-x: hidden;
+}
+
+.combo-content .inline-list {
+    width: 100%;
+    /*border: 2px solid blue;*/
+    gap: 0 !important;
+}
+
+.combo-content li:first-child {
+    flex-grow: 1;
+    max-width: calc(100% - 16px);
+}
+
+.combo-btn {
+    width: 16px;
+}
+
+.dhx_grid-cell.combo {
+    padding-right: 8px;
+}
+
+.dhx_grid-cell.combo .combo-content li {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

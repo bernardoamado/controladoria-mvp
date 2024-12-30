@@ -39,7 +39,7 @@ function Breadcrumbs() {
         >
             <ol className="breadcrumbs inline-list">
                 <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
+                    <Link to="/">Controladoria</Link>
                 </li>
                 {breadcrumbs?.map((crumb, i) => (
                     <li className="breadcrumb-item" key={i}>

@@ -15,9 +15,9 @@ export default function NavBar() {
         <div className="system-label">
           { (!atHome) && <button
             className="back-btn clickable"
-            onClick={goToHome}
+            onClick={() => navigate(-1)}
           ><i className="fa-solid fa-arrow-left"></i></button>}
-          <span className="system-name">Controladoria</span>
+          <span className="system-name" onClick={goToHome}>Controladoria</span>
         </div>
       </div>
 

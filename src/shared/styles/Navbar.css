@@ -50,6 +50,10 @@
     padding-left: 8px;
 }
 
+.system-name:hover {
+    cursor: pointer;
+}
+
 #user-profile {
     border-radius: 8px;
 }

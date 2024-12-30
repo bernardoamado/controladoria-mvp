@@ -30,14 +30,22 @@ export default function DocumentosNaoRateados() {
             type: 'date',
             dateFormat: '%d/%m/%Y',
         },
-        { id: 'fluxo', header: [{ text: 'Fluxo' }]},
+        {
+            id: 'fluxo',
+            header: [{ text: 'Fluxo' }],
+            template: (cell, row, col) => (row?.fluxo == 'IN') ? 'Entrada' : `Sa${iacute}da`
+        },
         {
             id: "valor",
             header: [{ text: "Valor" }],
             type: "number",
             numberMask: NhxUtil.currencyMask
         },
-        { id: 'estabelecimento', header: [{ text: 'Estabelecimento' }] },
+        {
+            id: 'estabelecimento',
+            header: [{ text: 'Estabelecimento' }],
+            template: (cell, row, col) => `${row?.estabelecimento?.codigo} - ${row?.estabelecimento?.descricao}`
+        },
         {
             id: 'status',
             header: [{ text: `Situa${ccedil}${atilde}o` }],
@@ -49,21 +57,33 @@ export default function DocumentosNaoRateados() {
     ];
     const columnsLancamentos = [
         { id: "documento", header: [{ text: "Documento" }] },
-        { id: 'fluxo', header: [{ text: 'Fluxo' }]},
+        {
+            id: 'fluxo',
+            header: [{ text: 'Fluxo' }],
+            template: (cell, row, col) => (row?.fluxo == 'IN') ? 'Entrada' : `Sa${iacute}da`
+        },
         {
             id: "data",
             header: [{ text: `Data do lan${ccedil}amento` }],
             type: 'date',
             dateFormat: '%d/%m/%Y',
         },
-        { id: "conta", header: [{ text: "Conta" }] },
+        {
+            id: "conta",
+            header: [{ text: "Conta" }],
+            template: (cell, row, col) => `${row?.conta?.codigo} - ${row?.conta?.numero}`
+        },
         {
             id: "valor",
             header: [{ text: "Valor" }],
             type: "number",
             numberMask: NhxUtil.currencyMask
         },
-        { id: 'estabelecimento', header: [{ text: 'Estabelecimento' }] },
+        {
+            id: 'estabelecimento',
+            header: [{ text: 'Estabelecimento' }],
+            template: (cell, row, col) => `${row?.estabelecimento?.codigo} - ${row?.estabelecimento?.descricao}`
+        },
         {
             id: 'status',
             header: [{ text: `Situa${ccedil}${atilde}o` }],
@@ -119,13 +139,9 @@ export default function DocumentosNaoRateados() {
     const parseTitulo = (t) => ObjectUtil.parse(t, {
         'vencimento': 'date',
         'emissao': 'date',
-        'estabelecimento': (e) => e.nome,
-        'fluxo': (fx) => fx.alias,
     });
     const parseLancamento = (l) => ObjectUtil.parse(l, {
         'data': 'date',
-        'estabelecimento': (e) => e.nome,
-        'fluxo': (fx) => fx.alias,
     });
     const endpoint = ({
         infoId,

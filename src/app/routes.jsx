@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Titulo from '../shared/pages/Titulo';
 import DocumentosNaoRateados from '../features/documentosNaoRateados/pages/DocumentosNaoRateados';
-import Lancamento from '../shared/pages/Lancamentos';
+import Lancamento from '../shared/pages/Lancamento';
 
 export default function AppRoutes() {
     return (
